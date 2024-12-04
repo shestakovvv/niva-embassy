@@ -1,0 +1,13 @@
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+# probe-rs chip list | grep 'STM32F303'
+runner = "probe-rs run --chip STM32F303VCTx"
+# probe-rs attach target/thumbv7em-none-eabihf/debug/niva-embassy --chip STM32F303VCTx
+
+[build]
+target = "thumbv7em-none-eabihf"
+
+[target.thumbv7em-none-eabihf]
+linker = "rust-lld"
+
+[env]
+DEFMT_LOG = "trace"
