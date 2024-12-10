@@ -1,9 +1,11 @@
 use embassy_futures::select::{self};
-use embassy_stm32::{mode::Async, usart::{self, Uart}};
+use embassy_stm32::usart::{self};
 use embassy_sync::{blocking_mutex::raw::ThreadModeRawMutex, mutex::Mutex};
 use embassy_time::{Duration, Timer};
 use heapless::Vec;
 use rmodbus::{client::ModbusRequest, ModbusProto};
+
+use crate::communication::rs485::Rs485;
 
 use super::SlaveNumber;
 
@@ -29,7 +31,7 @@ pub enum Error {
 const REGS_COUNT: usize = 7;
 
 pub struct Encoder {
-    uart: &'static Mutex<ThreadModeRawMutex, Uart<'static, Async>>,
+    uart: &'static Mutex<ThreadModeRawMutex, Rs485<'static>>,
     slave_number: SlaveNumber,
     node_id: u16,
     timeout: Duration,
@@ -37,7 +39,7 @@ pub struct Encoder {
 
 impl Encoder {
     pub fn new(
-        uart: &'static Mutex<ThreadModeRawMutex, Uart<'static, Async>>,
+        uart: &'static Mutex<ThreadModeRawMutex, Rs485<'static>>,
         slave_number: SlaveNumber,
         node_id: u16,
         timeout: Duration

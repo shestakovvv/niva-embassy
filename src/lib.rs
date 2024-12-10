@@ -7,3 +7,4 @@ pub use server::modbus_can_server;
 pub use server::modbus_server;
 pub use server::modbus_master;
 pub mod flash_memory;
+pub mod communication;
