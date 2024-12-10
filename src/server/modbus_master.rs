@@ -1,6 +1,6 @@
 mod encoder;
 
-pub use encoder::Encoder;
+pub use encoder::{Encoder, Error};
 
 #[derive(Debug, Clone, Copy, PartialEq)]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
