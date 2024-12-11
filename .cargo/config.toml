@@ -10,4 +10,4 @@ target = "thumbv7em-none-eabihf"
 linker = "rust-lld"
 
 [env]
-DEFMT_LOG = "trace"
+DEFMT_LOG = "warn"
