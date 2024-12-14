@@ -61,7 +61,7 @@ impl Encoder {
         let res: select::Either<Result<usize, embassy_stm32::usart::Error>, ()>;
         {
             let mut uart = self.uart.lock().await;
-            uart.write(&request.as_slice()).await.unwrap();
+            uart.write(request.as_slice()).await.unwrap();
 
             res = select::select(
                 uart.read_until_idle(&mut response), 
