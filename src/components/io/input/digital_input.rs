@@ -1,15 +1,15 @@
-use embassy_stm32::gpio::{Input as EmbInput, Level};
+use embassy_stm32::gpio::{Input, Level};
 
 use super::Polarity;
 
-pub struct Input<'d> {
-    input: EmbInput<'d>,
+pub struct DigitalInput<'d> {
+    input: Input<'d>,
     polarity: Polarity
 }
 
-impl<'d> Input<'d> {
+impl<'d> DigitalInput<'d> {
     #[inline]
-    pub fn new(input: EmbInput<'d>, polarity: Polarity) -> Self {
+    pub fn new(input: Input<'d>, polarity: Polarity) -> Self {
         Self {
             input,
             polarity

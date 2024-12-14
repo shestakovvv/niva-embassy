@@ -1,10 +1,10 @@
 mod input_group;
-mod input;
-mod exti_input;
+mod digital_input;
+mod digital_exti_input;
 
-pub use input_group::InputGroup;
-pub use input::Input;
-pub use exti_input::ExtiInput;
+pub use input_group::DigitalInputGroup;
+pub use digital_input::DigitalInput;
+pub use digital_exti_input::DigitalExtiInput;
 
 
 pub enum Polarity {
