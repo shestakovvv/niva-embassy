@@ -5,7 +5,7 @@ use embassy_time::{Duration, Timer};
 use heapless::Vec;
 use rmodbus::{client::ModbusRequest, ModbusProto};
 
-use crate::communication::rs485::Rs485;
+use crate::components::com::rs485::Rs485;
 
 use super::SlaveNumber;
 

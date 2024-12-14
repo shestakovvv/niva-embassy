@@ -1,6 +1,6 @@
-pub mod pt100;
-pub mod ai4_20ma;
 pub mod ai1_10v;
+pub mod ai4_20ma;
+pub mod pt100;
 
 #[inline]
 #[allow(unused)]

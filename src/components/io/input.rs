@@ -3,8 +3,8 @@ mod input;
 mod exti_input;
 
 pub use input_group::InputGroup;
-pub use input::DigitalInput;
-pub use exti_input::DigitalExtiInput;
+pub use input::Input;
+pub use exti_input::ExtiInput;
 
 
 pub enum Polarity {

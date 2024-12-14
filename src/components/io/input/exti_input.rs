@@ -1,17 +1,17 @@
 use embassy_stm32::gpio::Level;
-use embassy_stm32::exti::ExtiInput;
+use embassy_stm32::exti::ExtiInput as EmbExtiInput;
 
 use super::Polarity;
 
-pub struct DigitalExtiInput<'d> {
-    exti: ExtiInput<'d>,
+pub struct ExtiInput<'d> {
+    exti: EmbExtiInput<'d>,
     polarity: Polarity
 }
 
-impl<'d> DigitalExtiInput<'d> {
+impl<'d> ExtiInput<'d> {
     #[inline]
     pub fn new(
-        input: ExtiInput<'d>,
+        input: EmbExtiInput<'d>,
         polarity: Polarity
     ) -> Self {
         Self {
