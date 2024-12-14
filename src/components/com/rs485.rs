@@ -1,4 +1,5 @@
 use embassy_stm32::{gpio::Output, mode::Async, usart::{Error, Uart}};
+use embassy_time::Timer;
 
 pub struct Rs485<'a> {
     uart: Uart<'a, Async>,
@@ -19,6 +20,7 @@ impl<'a> Rs485<'a> {
         }
         self.uart.write(buffer).await?;
         if let Some(de) = self.de.as_mut() {
+            Timer::after_millis(2).await;
             de.set_low();
         }
         Ok(())

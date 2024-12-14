@@ -32,7 +32,7 @@ impl <'a, 'b, M: RawMutex> IndicatorLed<'a, 'b, M> {
             led, signal, 
             timeout,
             short_time: Duration::from_millis(40),
-            long_time: Duration::from_millis(1000),
+            long_time: Duration::from_millis(2500),
         }
     }
 

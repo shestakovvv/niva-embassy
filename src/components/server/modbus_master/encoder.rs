@@ -102,7 +102,7 @@ impl Encoder {
         let mut mreq = ModbusRequest::new(self.node_id as u8, ModbusProto::Rtu);
         let mut request: Vec<u8, 256> = Vec::new();
         let mut response = [0u8; 256];
-        mreq.generate_set_holding(reg + self.slave_number as u16 * 10, value as u16, &mut request).unwrap();
+        mreq.generate_set_holdings_bulk(reg + self.slave_number as u16 * 10, &[value as u16], &mut request).unwrap();
 
         let res: select::Either<Result<usize, embassy_stm32::usart::Error>, ()>;
         {
@@ -111,8 +111,8 @@ impl Encoder {
 
             res = select::select(
                 uart.read_until_idle(&mut response), 
-                Timer::after(self.timeout
-            )).await;
+                Timer::after(self.timeout)
+            ).await;
         }
 
         match res {
